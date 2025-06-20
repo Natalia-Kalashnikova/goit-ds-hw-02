@@ -22,14 +22,14 @@ def create_db():
     or an error message if an exception occurs during execution.
     """
     try:
-        # читаємо файл зі скриптом для створення БД
+        # read the file with the script to create the database
         with open("schema.sql", "r", encoding="utf-8") as f:
             sql = f.read()
 
-        # створюємо з'єднання з БД (якщо файлу з БД немає, він буде створений)
+        # create a connection to the database (if the database file does not exist, it will be created)
         with sqlite3.connect("task_manager.db") as con:
             cur = con.cursor()
-            # виконуємо скрипт із файлу, який створить таблиці в БД
+            # execute a script from a file that will create tables in the database
             cur.executescript(sql)
 
             print("Database created successfully.")
